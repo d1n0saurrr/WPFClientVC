@@ -1,0 +1,112 @@
+﻿<Window x:Class="VolunteerCenterDBClient.Views.VolunteerWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:VolunteerCenterDBClient.Views"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Title="Волонтер" Height="461.173" Width="343.397" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <Grid DataContext="_volunteer">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <TextBox
+            materialDesign:HintAssist.Hint="Фамилия"
+            x:Name="firstName"
+            Style="{DynamicResource MaterialDesignFloatingHintTextBox}"
+            materialDesign:HintAssist.Foreground="{DynamicResource buttonBackground}"
+            materialDesign:TextFieldAssist.UnderlineBrush="{DynamicResource buttonBackground}"
+            VerticalAlignment="Center" Grid.Row="0" Grid.Column="0" Width="140" />
+        <TextBox
+            materialDesign:HintAssist.Hint="Имя"
+            x:Name="lastName"
+            Style="{DynamicResource MaterialDesignFloatingHintTextBox}"
+            materialDesign:HintAssist.Foreground="{DynamicResource buttonBackground}"
+            materialDesign:TextFieldAssist.UnderlineBrush="{DynamicResource buttonBackground}"
+            VerticalAlignment="Center" Grid.Row="0" Grid.Column="1" Width="140" />
+        <TextBox
+            materialDesign:HintAssist.Hint="Отчество"
+            x:Name="patronymic"
+            Style="{DynamicResource MaterialDesignFloatingHintTextBox}"
+            materialDesign:HintAssist.Foreground="{DynamicResource buttonBackground}"
+            materialDesign:TextFieldAssist.UnderlineBrush="{DynamicResource buttonBackground}"
+            VerticalAlignment="Center" Grid.Row="1" Grid.Column="0" Width="140" />
+        <DatePicker
+            x:Name="dateOfBirth"
+            materialDesign:HintAssist.Hint="Дата рождения"
+            materialDesign:HintAssist.Foreground="{DynamicResource buttonBackground}"
+            materialDesign:TextFieldAssist.UnderlineBrush="{DynamicResource buttonBackground}"
+            BorderBrush="{DynamicResource buttonBackground}"
+            Style="{StaticResource MaterialDesignFloatingHintDatePicker}" Height="43" Grid.Row="1" Grid.Column="1" Margin="14,14.5,24.5,14.5" />
+        <TextBox
+            materialDesign:HintAssist.Hint="Пол"
+            x:Name="sex"
+            Style="{DynamicResource MaterialDesignFloatingHintTextBox}"
+            materialDesign:HintAssist.Foreground="{DynamicResource buttonBackground}"
+            materialDesign:TextFieldAssist.UnderlineBrush="{DynamicResource buttonBackground}"
+            VerticalAlignment="Center" Grid.Row="2" Grid.Column="0" Width="140" />
+        <TextBox
+            materialDesign:HintAssist.Hint="Гражданство"
+            x:Name="citizenship"
+            Style="{DynamicResource MaterialDesignFloatingHintTextBox}"
+            materialDesign:HintAssist.Foreground="{DynamicResource buttonBackground}"
+            materialDesign:TextFieldAssist.UnderlineBrush="{DynamicResource buttonBackground}"
+            VerticalAlignment="Center" Grid.Row="2" Grid.Column="1" Width="140" />
+        <TextBox
+            materialDesign:HintAssist.Hint="Институт"
+            x:Name="institute"
+            Style="{DynamicResource MaterialDesignFloatingHintTextBox}"
+            materialDesign:HintAssist.Foreground="{DynamicResource buttonBackground}"
+            materialDesign:TextFieldAssist.UnderlineBrush="{DynamicResource buttonBackground}"
+            VerticalAlignment="Center" Grid.Row="3" Grid.Column="0" Width="140" />
+        <TextBox
+            materialDesign:HintAssist.Hint="Группа"
+            x:Name="studyGroup"
+            materialDesign:HintAssist.Foreground="{DynamicResource buttonBackground}"
+            materialDesign:TextFieldAssist.UnderlineBrush="{DynamicResource buttonBackground}"
+            Style="{DynamicResource MaterialDesignFloatingHintTextBox}"
+            VerticalAlignment="Center" Grid.Row="3" Grid.Column="1" Width="140" />
+        <TextBox
+            materialDesign:HintAssist.Hint="Год окончания"
+            x:Name="yearOfGraduation"
+            Style="{DynamicResource MaterialDesignFloatingHintTextBox}"
+            materialDesign:HintAssist.Foreground="{DynamicResource buttonBackground}"
+            materialDesign:TextFieldAssist.UnderlineBrush="{DynamicResource buttonBackground}"
+            VerticalAlignment="Center" Grid.Row="4" Grid.Column="0" Width="140" />
+        <TextBox
+            materialDesign:HintAssist.Hint="Телефон"
+            x:Name="telephone"
+            Style="{DynamicResource MaterialDesignFloatingHintTextBox}"
+            materialDesign:HintAssist.Foreground="{DynamicResource buttonBackground}"
+            materialDesign:TextFieldAssist.UnderlineBrush="{DynamicResource buttonBackground}"
+            VerticalAlignment="Center" Grid.Row="4" Grid.Column="1" Width="140" />
+        <Button
+            Visibility="Hidden"
+            x:Name="addButton"
+            Style="{DynamicResource MaterialDesignRaisedDarkButton}"
+            Click="Save"
+            Content="Добавить" Grid.Row="5" Margin="98.4,19.8,98.4,20.2" Grid.ColumnSpan="2" Background="{DynamicResource buttonBackground}" BorderBrush="{DynamicResource buttonBackground}" />
+        <Button
+            Visibility="Hidden"
+            x:Name="saveButton"
+            Style="{DynamicResource MaterialDesignRaisedDarkButton}"
+            Click="Save"
+            Content="Сохранить" Grid.Row="5" Grid.Column="0" Margin="14,19.8,14.8,20.2" Background="{DynamicResource buttonBackground}" BorderBrush="{DynamicResource buttonBackground}" />
+        <Button
+            Visibility="Hidden"
+            x:Name="deleteButton"
+            Style="{DynamicResource MaterialDesignRaisedDarkButton}"
+            Click="Delete"
+            Content="Удалить" Grid.Row="5" Grid.Column="1" Margin="14.2,19.8,13.8,20.2" Background="{DynamicResource buttonBackground}" BorderBrush="{DynamicResource buttonBackground}" />
+    </Grid>
+</Window>

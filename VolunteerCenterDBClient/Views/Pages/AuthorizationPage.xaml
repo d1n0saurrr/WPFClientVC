@@ -1,0 +1,122 @@
+﻿<Page x:Class="VolunteerCenterDBClient.Views.Pages.AuthorizationPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:ph="clr-namespace:VolunteerCenterDBClient.ViewModels"
+      mc:Ignorable="d"
+      Title="AuthorizationPage" Height="500" Width="350">
+
+    <Grid>
+        <TabControl TabStripPlacement="Top" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TabItem Width="173" Height="50" HorizontalAlignment="Left" Margin="-2,0,0,-0.4">
+                <TabItem.Header>
+                    <TextBlock Text="Авторизация" Foreground="{DynamicResource buttonBackground}"/>
+                </TabItem.Header>
+                <Grid>
+                    <materialDesign:Card
+                        materialDesign:ShadowAssist.ShadowDepth="Depth4"
+                        Padding="32" Margin="46,46,46.46,46" />
+                    <Grid>
+                        <TextBox
+                            materialDesign:HintAssist.Hint="Имя пользователя"
+                            Style="{DynamicResource MaterialDesignFloatingHintTextBox}"
+                            materialDesign:HintAssist.Foreground="{DynamicResource buttonBackground}"
+                            materialDesign:TextFieldAssist.UnderlineBrush="{DynamicResource buttonBackground}"
+                            FontSize="18"
+                            VerticalAlignment="Center" Margin="90,109,90,280.2" Height="54"
+                            Text="{Binding Username, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" CaretBrush="Black"/>
+                        <PasswordBox
+                            x:Name="FloatingPasswordBox"
+                            FontSize="18"
+                            materialDesign:HintAssist.Hint="Пароль"
+                            Style="{DynamicResource MaterialDesignFloatingHintPasswordBox}" Margin="90,192,90,197.2"
+                            materialDesign:HintAssist.Foreground="{DynamicResource buttonBackground}"
+                            materialDesign:TextFieldAssist.UnderlineBrush="{DynamicResource buttonBackground}"
+                            ph:PasswordHelper.Attach ="True"
+                            ph:PasswordHelper.Password="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <Button
+                            Style="{DynamicResource MaterialDesignRaisedDarkButton}"
+                            Background="{DynamicResource buttonBackground}"
+                            Content="Авторизация" Margin="90,300,90,109"
+                            Command="{Binding AuthorizeCommand, UpdateSourceTrigger=PropertyChanged}" BorderBrush="{DynamicResource buttonBackground}"/>
+                    </Grid>
+                </Grid>
+            </TabItem>
+            <TabItem Width="173" Height="50" HorizontalAlignment="Right" Margin="0,0,-3.4,-0.4">
+                <TabItem.Header>
+                    <TextBlock Text="Регистрация" Foreground="{DynamicResource buttonBackground}"/>
+                </TabItem.Header>
+                <Grid>
+                    <materialDesign:Card
+                        materialDesign:ShadowAssist.ShadowDepth="Depth4"
+                        Padding="32" Margin="16" />
+                    <Grid>
+                        <TextBox
+                            materialDesign:HintAssist.Hint="Фамилия"
+                            Style="{DynamicResource MaterialDesignFloatingHintTextBox}"
+                            materialDesign:HintAssist.Foreground="{DynamicResource buttonBackground}"
+                            materialDesign:TextFieldAssist.UnderlineBrush="{DynamicResource buttonBackground}"
+                            FontSize="10"
+                            VerticalAlignment="Center" Margin="89.9,44,89.9,360.2" Height="39"
+                            Text="{Binding FirstName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBox
+                            materialDesign:HintAssist.Hint="Имя"
+                            Style="{DynamicResource MaterialDesignFloatingHintTextBox}"
+                            materialDesign:HintAssist.Foreground="{DynamicResource buttonBackground}"
+                            materialDesign:TextFieldAssist.UnderlineBrush="{DynamicResource buttonBackground}"
+                            FontSize="10"
+                            VerticalAlignment="Center" Margin="89.9,88,89.9,316.2" Height="39"
+                            Text="{Binding LastName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBox
+                            materialDesign:HintAssist.Hint="Отчество"
+                            Style="{DynamicResource MaterialDesignFloatingHintTextBox}"
+                            materialDesign:HintAssist.Foreground="{DynamicResource buttonBackground}"
+                            materialDesign:TextFieldAssist.UnderlineBrush="{DynamicResource buttonBackground}"
+                            FontSize="10"
+                            VerticalAlignment="Center" Margin="89.9,132,89.9,272.2" Height="39"
+                            Text="{Binding Patronymic, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBox
+                            materialDesign:HintAssist.Hint="Email"
+                            Style="{DynamicResource MaterialDesignFloatingHintTextBox}"
+                            materialDesign:HintAssist.Foreground="{DynamicResource buttonBackground}"
+                            materialDesign:TextFieldAssist.UnderlineBrush="{DynamicResource buttonBackground}"
+                            FontSize="10"
+                            VerticalAlignment="Center" Margin="89.9,180,89.9,224.2" Height="39"
+                            Text="{Binding Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBox
+                            materialDesign:HintAssist.Hint="Имя пользователя"
+                            Style="{DynamicResource MaterialDesignFloatingHintTextBox}"
+                            materialDesign:HintAssist.Foreground="{DynamicResource buttonBackground}"
+                            materialDesign:TextFieldAssist.UnderlineBrush="{DynamicResource buttonBackground}"
+                            FontSize="10"
+                            VerticalAlignment="Center" Margin="89.9,224,89.9,180.2" Height="39"
+                            Text="{Binding Username, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <PasswordBox
+                            FontSize="10"
+                            materialDesign:HintAssist.Hint="Пароль"
+                            Style="{DynamicResource MaterialDesignFloatingHintPasswordBox}" Margin="89.9,268,89.9,136.2"
+                            materialDesign:HintAssist.Foreground="{DynamicResource buttonBackground}"
+                            materialDesign:TextFieldAssist.UnderlineBrush="{DynamicResource buttonBackground}"
+                            ph:PasswordHelper.Attach ="True"
+                            ph:PasswordHelper.Password="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <PasswordBox
+                            FontSize="10"
+                            materialDesign:HintAssist.Hint="Подтверждение пароля"
+                            Style="{DynamicResource MaterialDesignFloatingHintPasswordBox}" Margin="89.9,307,89.9,97.2"
+                            materialDesign:HintAssist.Foreground="{DynamicResource buttonBackground}"
+                            materialDesign:TextFieldAssist.UnderlineBrush="{DynamicResource buttonBackground}"
+                            ph:PasswordHelper.Attach ="True"
+                            ph:PasswordHelper.Password="{Binding PasswordConfirmation, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <Button
+                            Style="{DynamicResource MaterialDesignRaisedDarkButton}"
+                            Background="{DynamicResource buttonBackground}"
+                            Content="Регистрация" Margin="89.9,364,89.9,47.2"
+                            Command="{Binding RegisterCommand, UpdateSourceTrigger=PropertyChanged}" BorderBrush="{DynamicResource buttonBackground}"/>
+                    </Grid>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Page>

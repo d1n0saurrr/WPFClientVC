@@ -1,0 +1,95 @@
+﻿<Window x:Class="VolunteerCenterDBClient.Views.OrgWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:VolunteerCenterDBClient.Views"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="Организатор" Height="450" Width="360.129">
+    <Grid>
+        <Grid DataContext="_volunteer">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="0.7*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBox
+                materialDesign:HintAssist.Hint="Название"
+                x:Name="name"
+                Style="{DynamicResource MaterialDesignFloatingHintTextBox}"
+                materialDesign:HintAssist.Foreground="{DynamicResource buttonBackground}"
+                materialDesign:TextFieldAssist.UnderlineBrush="{DynamicResource buttonBackground}"
+                VerticalAlignment="Center" Grid.Row="0" Grid.Column="0" Width="140" />
+            <TextBox
+                materialDesign:HintAssist.Hint="Контактное лицо"
+                x:Name="contactPerson"
+                Style="{DynamicResource MaterialDesignFloatingHintTextBox}"
+                materialDesign:HintAssist.Foreground="{DynamicResource buttonBackground}"
+                materialDesign:TextFieldAssist.UnderlineBrush="{DynamicResource buttonBackground}"
+                VerticalAlignment="Center" Grid.Row="0" Grid.Column="1" Width="140" />
+            <TextBox
+                materialDesign:HintAssist.Hint="Телефон"
+                x:Name="telephone"
+                Style="{DynamicResource MaterialDesignFloatingHintTextBox}"
+                materialDesign:HintAssist.Foreground="{DynamicResource buttonBackground}"
+                materialDesign:TextFieldAssist.UnderlineBrush="{DynamicResource buttonBackground}"
+                VerticalAlignment="Center" Grid.Row="1" Grid.Column="0" Width="140" />
+            <TextBox
+                materialDesign:HintAssist.Hint="Email"
+                x:Name="email"
+                Style="{DynamicResource MaterialDesignFloatingHintTextBox}"
+                materialDesign:HintAssist.Foreground="{DynamicResource buttonBackground}"
+                materialDesign:TextFieldAssist.UnderlineBrush="{DynamicResource buttonBackground}"
+                VerticalAlignment="Center" Grid.Row="1" Grid.Column="1" Width="140" />
+            <ScrollViewer
+                Grid.Row="1" Grid.ColumnSpan="2" Margin="18,73.4,14.6,0" Grid.RowSpan="2">
+                <DataGrid Grid.Row="1"
+                x:Name="eventsGrid"
+                IsEnabled="False"
+                CanUserAddRows="False"
+                AutoGenerateColumns="False"
+                HeadersVisibility="All"
+                IsReadOnly="True" Width="302">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn
+                        Binding="{Binding shortName}"
+                        Header="Название"
+                        ElementStyle="{DynamicResource MaterialDesignDataGridTextColumnStyle}"/>
+                        <DataGridTextColumn
+                        Binding="{Binding StartDay}"
+                        Header="Начало"
+                        ElementStyle="{DynamicResource MaterialDesignDataGridTextColumnStyle}"/>
+                        <DataGridTextColumn
+                        Binding="{Binding EndDay}"
+                        Header="Конец"
+                        ElementStyle="{DynamicResource MaterialDesignDataGridTextColumnStyle}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </ScrollViewer>
+            <Button
+            Visibility="Hidden"
+            x:Name="addButton"
+            Style="{DynamicResource MaterialDesignRaisedDarkButton}"
+            Click="Save"
+            Content="Добавить" Grid.Row="3" Margin="98,10,98.6,10" Grid.ColumnSpan="2" Background="{DynamicResource buttonBackground}" BorderBrush="{DynamicResource buttonBackground}" />
+            <Button
+            Visibility="Hidden"
+            x:Name="saveButton"
+            Style="{DynamicResource MaterialDesignRaisedDarkButton}"
+            Click="Save"
+            Content="Сохранить" Grid.Row="3" Grid.Column="0" Margin="14,10,14.8,10" Background="{DynamicResource buttonBackground}" BorderBrush="{DynamicResource buttonBackground}" />
+            <Button
+            Visibility="Hidden"
+            x:Name="deleteButton"
+            Style="{DynamicResource MaterialDesignRaisedDarkButton}"
+            Click="Delete"
+            Content="Удалить" Grid.Row="3" Grid.Column="1" Margin="14.2,10,14.6,10" Background="{DynamicResource buttonBackground}" BorderBrush="{DynamicResource buttonBackground}" />
+        </Grid>
+    </Grid>
+</Window>

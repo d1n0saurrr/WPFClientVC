@@ -1,0 +1,170 @@
+﻿<Window x:Class="VolunteerCenterDBClient.Views.EventWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:VolunteerCenterDBClient.Views"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Title="Мероприятие" Height="560" Width="1070">
+    
+    <Grid x:Name="mainGrid">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="60*"/>
+            <ColumnDefinition Width="40*"/>
+        </Grid.ColumnDefinitions>
+        <Grid DataContext="_volunteer" Grid.ColumnSpan="2" Margin="0,0,511,0.4">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="0.7*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBox
+                materialDesign:HintAssist.Hint="Название"
+                x:Name="name"
+                Style="{DynamicResource MaterialDesignFloatingHintTextBox}"
+                materialDesign:HintAssist.Foreground="{DynamicResource buttonBackground}"
+                materialDesign:TextFieldAssist.UnderlineBrush="{DynamicResource buttonBackground}"
+                VerticalAlignment="Center" Grid.Row="0" Grid.Column="0" Width="140" />
+            <TextBox
+                materialDesign:HintAssist.Hint="Короткое название"
+                x:Name="shortName"
+                Style="{DynamicResource MaterialDesignFloatingHintTextBox}"
+                materialDesign:HintAssist.Foreground="{DynamicResource buttonBackground}"
+                materialDesign:TextFieldAssist.UnderlineBrush="{DynamicResource buttonBackground}"
+                VerticalAlignment="Center" Grid.Row="0" Grid.Column="1" Width="140" />
+            <DatePicker
+                x:Name="beginDate"
+                materialDesign:HintAssist.Hint="Начало"
+                materialDesign:HintAssist.Foreground="{DynamicResource buttonBackground}"
+                materialDesign:TextFieldAssist.UnderlineBrush="{DynamicResource buttonBackground}"
+                BorderBrush="{DynamicResource buttonBackground}"
+                Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
+                Height="43" Grid.Row="1" Grid.Column="0" Margin="66,17.8,66.8,18.4" />
+            <DatePicker
+                x:Name="endDate"
+                materialDesign:HintAssist.Hint="Конец"
+                materialDesign:HintAssist.Foreground="{DynamicResource buttonBackground}"
+                materialDesign:TextFieldAssist.UnderlineBrush="{DynamicResource buttonBackground}"
+                BorderBrush="{DynamicResource buttonBackground}"
+                Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
+                Height="43" Grid.Row="1" Grid.Column="1" Margin="66.2,17.8,65.8,18.4" />
+            <ComboBox
+                x:Name="orgs"
+                materialDesign:HintAssist.Hint="Организатор"
+                Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                materialDesign:HintAssist.Foreground="{DynamicResource buttonBackground}"
+                materialDesign:TextFieldAssist.UnderlineBrush="{DynamicResource buttonBackground}"
+                BorderBrush="{DynamicResource buttonBackground}"
+                Grid.Row="2" Grid.ColumnSpan="2" Margin="66,19.6,65.8,19.6">
+                <ComboBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <VirtualizingStackPanel />
+                    </ItemsPanelTemplate>
+                </ComboBox.ItemsPanel>
+            </ComboBox>
+            <ScrollViewer Margin="0,69.6,0,0"
+                Grid.Row="2" Grid.ColumnSpan="2"
+                Grid.RowSpan="2" HorizontalScrollBarVisibility="Auto" HorizontalAlignment="Center">
+                <DataGrid Grid.Row="1"
+                    x:Name="volsGrid"
+                    IsEnabled="False"
+                    CanUserAddRows="False"
+                    AutoGenerateColumns="False"
+                    HeadersVisibility="All"
+                    IsReadOnly="True" HorizontalAlignment="Center">
+                    <!--<DataGrid.InputBindings>
+                        <MouseBinding
+                        MouseAction="LeftDoubleClick"
+                        Command="{Binding SelectVolCommand}"
+                        CommandParameter="{Binding SelectedVol}"/>
+                    </DataGrid.InputBindings>-->
+                    <DataGrid.Columns>
+                        <DataGridTextColumn
+                        Binding="{Binding firstName}"
+                        Header="Фамилия"
+                        ElementStyle="{DynamicResource MaterialDesignDataGridTextColumnStyle}"/>
+                        <DataGridTextColumn
+                        Binding="{Binding lastName}"
+                        Header="Имя"
+                        ElementStyle="{DynamicResource MaterialDesignDataGridTextColumnStyle}"/>
+                        <DataGridTextColumn
+                        Binding="{Binding patronymic}"
+                        Header="Отчество"
+                        ElementStyle="{DynamicResource MaterialDesignDataGridTextColumnStyle}"/>
+                        <DataGridTextColumn
+                        Binding="{Binding dateOfBirth}"
+                        Header="Дата рождения"
+                        ElementStyle="{DynamicResource MaterialDesignDataGridTextColumnStyle}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </ScrollViewer>
+            <Button
+            x:Name="addButton"
+            Visibility="Hidden"
+            Style="{DynamicResource MaterialDesignRaisedDarkButton}"
+            Click="Save"
+            Content="Добавить" Grid.Row="4" Margin="98,11.6,98.2,11.6" Grid.ColumnSpan="2" Background="{DynamicResource buttonBackground}" BorderBrush="{DynamicResource buttonBackground}" />
+            <Button
+            Visibility="Hidden"
+            x:Name="saveButton"
+            Style="{DynamicResource MaterialDesignRaisedDarkButton}"
+            Click="Save"
+            Content="Сохранить" Grid.Row="4" Grid.Column="0" Margin="14,11.6,15,11.6" Background="{DynamicResource buttonBackground}" BorderBrush="{DynamicResource buttonBackground}" />
+            <Button
+            Visibility="Hidden"
+            x:Name="deleteButton"
+            Style="{DynamicResource MaterialDesignRaisedDarkButton}"
+            Click="Delete"
+            Content="Удалить" Grid.Row="4" Grid.Column="1" Margin="14,11.6,14.2,11.6" Background="{DynamicResource buttonBackground}" BorderBrush="{DynamicResource buttonBackground}" />
+        </Grid>
+        <Grid x:Name="requests" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="20*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Text="Заявки волонтеров:" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            <DataGrid Grid.Row="1"
+                x:Name="requestsGrid" IsEnabled="True"
+                IsSynchronizedWithCurrentItem="True"
+                CanUserAddRows="False"
+                AutoGenerateColumns="False"
+                HeadersVisibility="All"
+                Visibility="Visible">
+                <DataGrid.Columns>
+                    <DataGridTextColumn
+                        IsReadOnly="True"
+                        Binding="{Binding firstName}"
+                        Header="Фамилия"
+                        ElementStyle="{DynamicResource MaterialDesignDataGridTextColumnStyle}"/>
+                    <DataGridTextColumn
+                        IsReadOnly="True"
+                        Binding="{Binding lastName}"
+                        Header="Имя"
+                        ElementStyle="{DynamicResource MaterialDesignDataGridTextColumnStyle}"/>
+                    <DataGridTextColumn
+                        IsReadOnly="True"
+                        Binding="{Binding patronymic}"
+                        Header="Отчество"
+                        ElementStyle="{DynamicResource MaterialDesignDataGridTextColumnStyle}"/>
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button x:Name="saveBT" Visibility="Visible"
+                                        Content="Принять" Background="{DynamicResource buttonBackground}"
+                                        BorderBrush="{DynamicResource buttonBackground}"
+                                        Click="Accept"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+    </Grid>
+</Window>
